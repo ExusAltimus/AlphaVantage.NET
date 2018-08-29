@@ -1,0 +1,20 @@
+﻿@model Exus.AlphaVantage.QueryResults.TimeSeriesIntradayQueryResult
+@{
+    ViewData["Title"] = "Stock Prices";
+}
+
+<p>Current Stock Prices for @Model.MetaData.Symbol</p>
+<div class="well-lg">
+    @foreach (var price in Model.TimeSeries)
+    {
+        <p>
+            Time: @price.Key
+        </p>
+        <p>
+            Open: @price.Value.Open
+        </p>
+        <p>
+            Close: @price.Value.Close
+        </p>
+    }
+</div>
