@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer", "StockAnalyzer\StockAnalyzer.csproj", "{69B9FA4B-897B-4C0A-B11A-C8018420549B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockAnalyzer", "StockAnalyzer\StockAnalyzer.csproj", "{69B9FA4B-897B-4C0A-B11A-C8018420549B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exus.AlphaVantage", "Exus.AlphaVantage\Exus.AlphaVantage.csproj", "{BF8C20A5-F843-4943-9D14-AF1C15690C9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exus.AlphaVantage", "..\..\Exus.AlphaVantage\Exus.AlphaVantage.csproj", "{1B68E403-62E0-4CBF-8C12-13060EEB826D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{69B9FA4B-897B-4C0A-B11A-C8018420549B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69B9FA4B-897B-4C0A-B11A-C8018420549B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69B9FA4B-897B-4C0A-B11A-C8018420549B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF8C20A5-F843-4943-9D14-AF1C15690C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF8C20A5-F843-4943-9D14-AF1C15690C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF8C20A5-F843-4943-9D14-AF1C15690C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF8C20A5-F843-4943-9D14-AF1C15690C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B68E403-62E0-4CBF-8C12-13060EEB826D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B68E403-62E0-4CBF-8C12-13060EEB826D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B68E403-62E0-4CBF-8C12-13060EEB826D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B68E403-62E0-4CBF-8C12-13060EEB826D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

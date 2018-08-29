@@ -18,13 +18,20 @@ namespace StockAnalyzer
             _apiQuerier = apiQuerier;
         }
 
-        public async Task<TimeSeriesIntradayQueryResult> GetCurrentStockPrice(string symbol)
+        public async Task<TimeSeriesIntradayQueryResult> GetIntradayTimeSeries(string symbol)
         {
-            //var query = new Exus.AlphaVantage.Queries.TimeSeriesIntradayQuery
-            //{
-            //    Symbol = symbol
-            //};
+            var query = new Exus.AlphaVantage.Queries.TimeSeriesIntradayQuery
+            {
+                Symbol = symbol
+            };
 
+            var result = await _apiQuerier.Query(query);
+
+            return result;
+        }
+
+        public async Task<dynamic> GetCurrencyExchangeRate(string symbol)
+        {
             var query = new Exus.AlphaVantage.ApiQuery<dynamic>(new Dictionary<string, string>()
             {
                 { "function", "CURRENCY_EXCHANGE_RATE" },

@@ -37,6 +37,10 @@ namespace Exus.AlphaVantage
         {
             if (String.IsNullOrEmpty(query.ApiKey))
                 query.ApiKey = _options.ApiKey;
+
+            if (query.ApiKey == "demo" || String.IsNullOrEmpty(query.ApiKey))
+                throw new Exception("Api key required.");
+
             return await _webClient.Query(query);
         }
     }

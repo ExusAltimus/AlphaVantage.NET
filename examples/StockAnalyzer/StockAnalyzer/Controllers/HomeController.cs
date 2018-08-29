@@ -20,7 +20,7 @@ namespace StockAnalyzer.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await _stockDataQuerier.GetCurrentStockPrice("MSFT");
+            var result = await _stockDataQuerier.GetIntradayTimeSeries("MSFT");
             return View(result);
         }
 

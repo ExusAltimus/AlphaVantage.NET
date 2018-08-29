@@ -12,7 +12,7 @@ namespace StockAnalyzer
 {
     public class Startup
     {
-        private const string ALPHA_VANTAGE_API_KEY = "demo";
+        private const string ALPHA_VANTAGE_API_KEY = "";
 
         public Startup(IConfiguration configuration)
         {
@@ -27,6 +27,12 @@ namespace StockAnalyzer
             services.AddMvc();
             services.AddTransient<AlphaVantageStockDataQuerier, AlphaVantageStockDataQuerier>();
             services.AddAlphaVantage();
+
+            if (String.IsNullOrEmpty(ALPHA_VANTAGE_API_KEY))
+            {
+                throw new Exception("Api key is required.");
+            }
+
             services.Configure<ApiQuerierSettings>(o =>
             {
                 o.ApiKey = ALPHA_VANTAGE_API_KEY;
