@@ -37,7 +37,6 @@ namespace StockAnalyzer
             {
                 o.ApiKey = ALPHA_VANTAGE_API_KEY;
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

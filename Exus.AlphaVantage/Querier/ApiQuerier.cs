@@ -1,4 +1,5 @@
 ﻿
+using Exus.AlphaVantage.Deserializer;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Exus.AlphaVantage
 {
+    /// <summary>
+    /// Default implementation
+    /// </summary>
     public class ApiQuerier : IApiQuerier
     {
         private readonly ApiQuerierSettings _options;
@@ -38,7 +42,7 @@ namespace Exus.AlphaVantage
             if (String.IsNullOrEmpty(query.ApiKey))
                 query.ApiKey = _options.ApiKey;
 
-            if (query.ApiKey == "demo" || String.IsNullOrEmpty(query.ApiKey))
+            if (String.IsNullOrEmpty(query.ApiKey))
                 throw new Exception("Api key required.");
 
             return await _webClient.Query(query);

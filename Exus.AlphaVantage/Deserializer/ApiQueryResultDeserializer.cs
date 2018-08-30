@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Exus.AlphaVantage.Deserializer
 {
-    public class ApiQueryResultDeserializer : IApiQueryResultDeserializer
+    public class ApiQueryResultDeserializer : IApiQueryResultDeserializer<string>
     {
         private readonly IServiceProvider _serviceProvider;
 

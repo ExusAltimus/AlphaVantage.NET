@@ -11,25 +11,27 @@ using Exus.AlphaVantage.Deserializer;
 
 namespace Exus.AlphaVantage
 {
+    /// <summary>
+    /// Default implementation
+    /// </summary>
     public class ApiWebClient : IApiWebClient
     { 
-        private readonly IApiQueryResultDeserializer _deserializer;
+        public const string QUERY_URL = "https://www.alphavantage.co/query";
+
+        private readonly IApiQueryResultDeserializer<string> _deserializer;
 
         public ApiWebClient()
         {
             _deserializer = new ApiQueryResultDeserializer();
         }
 
-        public ApiWebClient(IApiQueryResultDeserializer deserializer)
+        public ApiWebClient(IApiQueryResultDeserializer<string> deserializer)
         {
             _deserializer = deserializer;
         }
 
-        public const string QUERY_URL = "https://www.alphavantage.co/query";
-        
         public async Task<TApiQueryResult> Query<TApiQueryResult>(IApiQuery<TApiQueryResult> query)
         {
-            TApiQueryResult result;
             using (var webClient = new System.Net.WebClient())
             {
                 webClient.QueryString = query.Parameters.Aggregate(new NameValueCollection(),
@@ -37,12 +39,9 @@ namespace Exus.AlphaVantage
                                 seed.Add(current.Key, current.Value);
                                 return seed;
                             });
-          
                 var json = await webClient.DownloadStringTaskAsync(QUERY_URL);
-                result = _deserializer.Deserialize<TApiQueryResult>(json);      
-            }
-
-            return result;
+                return _deserializer.Deserialize<TApiQueryResult>(json);
+            }    
         }
     }
 }

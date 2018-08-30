@@ -4,11 +4,8 @@ using System.Text;
 
 namespace Exus.AlphaVantage
 {
-
-    public interface IApiQueryResultDeserializer
+    public interface IApiQueryResultDeserializer<TDataType>
     {
-        TApiQueryResult Deserialize<TApiQueryResult>(string json);
+        TApiQueryResult Deserialize<TApiQueryResult>(TDataType data);
     }
-
-
 }
