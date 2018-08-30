@@ -77,19 +77,19 @@ public class StockQuerierService
 ## Use your own implementations w/ dependency injection: 
 This library provides several useful interfaces that integrate with dependency injection services that enable you to provide your own implementations.
 
-###IApiQuerier
+### IApiQuerier
     Processes a query object and returns a query result
-###IApiWebClient
+### IApiWebClient
     Web client used by the default ApiQuerier that retrieves a response and deserializes into an object
-###IApiQueryResultDeserializer<TDataType>
+### IApiQueryResultDeserializer<TDataType>
     Deserializer used by the default Web client to deserialize a response string (json)
     Note: The datatype exists incase anything other than a string needs to be deserialized, such as a memory stream or file
-###IApiQueryResultContractResolver
+### IApiQueryResultContractResolver
     Json.NET Contract resolver used by the default deserializer
-###ApiQueryResultJsonConverter
+### ApiQueryResultJsonConverter
     Json.NET converter used by the default deserializer
     
-##Default services
+## Default services
 
 AlphaVantageServices.cs
 ```csharp
@@ -103,7 +103,7 @@ public static void AddAlphaVantage(this IServiceCollection services)
 }
 ```
 
-##Example custom implementation
+## Example custom implementation
 MyCustomApiWebClient.cs
 ```csharp
 public class MyCustomApiWebClient : IApiWebClient
