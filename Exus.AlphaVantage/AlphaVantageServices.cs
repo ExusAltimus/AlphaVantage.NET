@@ -3,6 +3,7 @@ using Exus.AlphaVantage.Deserializer.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Exus.AlphaVantage
@@ -17,7 +18,7 @@ namespace Exus.AlphaVantage
         {
             services.AddTransient<IApiQuerier, ApiQuerier>();
             services.AddTransient<IApiWebClient, ApiWebClient>();
-            services.AddTransient<IApiQueryResultDeserializer<string>, ApiQueryResultDeserializer>();
+            services.AddTransient<IApiQueryResultDeserializer<Stream>, ApiQueryResultDeserializer>();
             services.AddTransient<IApiQueryResultContractResolver, ApiQueryResultContractResolver>();
             services.AddTransient<ApiQueryResultJsonConverter, ApiQueryResultJsonConverter>();
         }

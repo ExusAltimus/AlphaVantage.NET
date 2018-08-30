@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
 using Exus.AlphaVantage.Deserializer;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Exus.AlphaVantage
 {
@@ -18,14 +20,14 @@ namespace Exus.AlphaVantage
     { 
         public const string QUERY_URL = "https://www.alphavantage.co/query";
 
-        private readonly IApiQueryResultDeserializer<string> _deserializer;
+        private readonly IApiQueryResultDeserializer<Stream> _deserializer;
 
         public ApiWebClient()
         {
             _deserializer = new ApiQueryResultDeserializer();
         }
 
-        public ApiWebClient(IApiQueryResultDeserializer<string> deserializer)
+        public ApiWebClient(IApiQueryResultDeserializer<Stream> deserializer)
         {
             _deserializer = deserializer;
         }
@@ -39,8 +41,12 @@ namespace Exus.AlphaVantage
                                 seed.Add(current.Key, current.Value);
                                 return seed;
                             });
-                var json = await webClient.DownloadStringTaskAsync(QUERY_URL);
-                return _deserializer.Deserialize<TApiQueryResult>(json);
+                using (var stream = await webClient.OpenReadTaskAsync(QUERY_URL))
+                {
+                    var result = _deserializer.Deserialize<TApiQueryResult>(stream);
+
+                    return result;
+                }
             }    
         }
     }

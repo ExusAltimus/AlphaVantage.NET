@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Exus.AlphaVantage.QueryResults
+namespace Exus.AlphaVantage
 {
     [DataContract]
     public class ApiQueryResult : IApiQueryResult

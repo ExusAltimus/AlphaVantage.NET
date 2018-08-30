@@ -9,9 +9,8 @@ namespace Exus.AlphaVantage.Queries
 {
     public class TimeSeriesIntradayQuery : ApiQuery<QueryResults.TimeSeriesIntradayQueryResult>
     {
-        public TimeSeriesIntradayQuery()
+        public TimeSeriesIntradayQuery() : base(ApiFunction.TIME_SERIES_INTRADAY)
         {
-            this.Function = ApiFunction.TIME_SERIES_INTRADAY;
             this.Interval = IntradayInterval.FifteenMinutes;
         }
 

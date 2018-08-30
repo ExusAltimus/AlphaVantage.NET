@@ -30,7 +30,7 @@ namespace StockAnalyzer
             return result;
         }
 
-        public async Task<dynamic> GetCurrencyExchangeRate(string symbol)
+        public async Task<dynamic> GetCurrencyExchangeRate()
         {
             var query = new Exus.AlphaVantage.ApiQuery<dynamic>(new Dictionary<string, string>()
             {

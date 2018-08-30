@@ -9,9 +9,8 @@ namespace Exus.AlphaVantage.Queries
 {
     public class TimeSeriesMonthlyAdjustedQuery : ApiQuery<QueryResults.TimeSeriesMonthlyAdjustedQueryResult>
     {
-        public TimeSeriesMonthlyAdjustedQuery()
+        public TimeSeriesMonthlyAdjustedQuery() : base(ApiFunction.TIME_SERIES_MONTHLY_ADJUSTED)
         {
-            this.Function = ApiFunction.TIME_SERIES_MONTHLY_ADJUSTED;
         }
 
         [ApiParameter("symbol")]

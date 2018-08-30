@@ -18,9 +18,19 @@ namespace Exus.AlphaVantage
             this.Parameters = new Dictionary<string, string>();
         }
 
+        public ApiQuery(ApiFunction function) : this()
+        {
+            this.Function = function;
+        }
+
         public ApiQuery(Dictionary<string, string> parameters)
         {
             this.Parameters = parameters;
+        }
+
+        public ApiQuery(ApiFunction function, Dictionary<string, string> parameters) : this(parameters)
+        {
+            this.Function = function;
         }
 
         /// <summary>

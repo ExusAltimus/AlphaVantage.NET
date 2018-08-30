@@ -20,7 +20,8 @@ namespace StockAnalyzer.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await _stockDataQuerier.GetIntradayTimeSeries("MSFT");
+            var result = await _stockDataQuerier.GetIntradayTimeSeries("asdMSFT");
+            var result2 = await _stockDataQuerier.GetCurrencyExchangeRate();
             return View(result);
         }
 

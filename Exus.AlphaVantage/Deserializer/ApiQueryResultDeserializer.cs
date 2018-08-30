@@ -1,12 +1,16 @@
 ﻿using Exus.AlphaVantage.Deserializer.Interfaces;
+using Exus.AlphaVantage.QueryResults;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Exus.AlphaVantage.Deserializer
 {
-    public class ApiQueryResultDeserializer : IApiQueryResultDeserializer<string>
+    public class ApiQueryResultDeserializer : IApiQueryResultDeserializer<Stream>
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -19,23 +23,33 @@ namespace Exus.AlphaVantage.Deserializer
             _serviceProvider = serviceProvider;
         }
 
-        public TApiQueryResult Deserialize<TApiQueryResult>(string json)
+
+        public TApiQueryResult Deserialize<TApiQueryResult>(Stream stream)
         {
             var resolved = _serviceProvider?.GetService(typeof(IApiQueryResultContractResolver));
             var contractResolver = (IApiQueryResultContractResolver)(resolved ?? new ApiQueryResultContractResolver(_serviceProvider));
-            var queryResultType = typeof(TApiQueryResult);
 
-            if (queryResultType != typeof(object))
+
+            var reader = new StreamReader(stream);
+            var jsonReader = new JsonTextReader(reader);
+            var serializer = new JsonSerializer();
+
+            serializer.ContractResolver = contractResolver;
+            var jObject = serializer.Deserialize(jsonReader);
+            
+            if (((JObject)jObject).Properties().Any(p => p.Name == "Error Message"))
             {
-                return JsonConvert.DeserializeObject<TApiQueryResult>(json, new JsonSerializerSettings()
-                {
-                    ContractResolver = contractResolver
-                });
+                var errorResult = ((JObject)jObject).ToObject<ErrorQueryResult>();
+                if (!String.IsNullOrEmpty(errorResult.ErrorMessage))
+                    throw new ApiQueryErrorException(errorResult.ErrorMessage);
             }
-            else
+            else if (typeof(TApiQueryResult) != typeof(object))
             {
-                return JsonConvert.DeserializeObject<TApiQueryResult>(json);
+                var result = ((JObject)jObject).ToObject<TApiQueryResult>();
+                return result;
             }
+
+            return (TApiQueryResult)jObject;
         }
     }
 }

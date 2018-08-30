@@ -9,9 +9,8 @@ namespace Exus.AlphaVantage.Queries
 {
     public class TimeSeriesWeeklyQuery : ApiQuery<QueryResults.TimeSeriesWeeklyQueryResult>
     {
-        public TimeSeriesWeeklyQuery()
+        public TimeSeriesWeeklyQuery() : base(ApiFunction.TIME_SERIES_WEEKLY)
         {
-            this.Function = ApiFunction.TIME_SERIES_WEEKLY;
         }
 
         [ApiParameter("symbol")]
