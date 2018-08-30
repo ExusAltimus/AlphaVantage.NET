@@ -18,6 +18,6 @@ namespace Exus.AlphaVantage.QueryResults
         public TimeSeriesMetaData MetaData { get; set; }
 
         [DataMember(Name = "Time Series (Daily)")]
-        public Dictionary<DateTime, TimeSeriesDailyAdjustedEntry> TimeSeries { get; set; }
+        public Dictionary<DateTime, TimeSeriesAdjustedEntry> TimeSeries { get; set; }
     }
 }

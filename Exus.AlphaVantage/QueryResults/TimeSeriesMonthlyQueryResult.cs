@@ -15,7 +15,7 @@ namespace Exus.AlphaVantage.QueryResults
     public class TimeSeriesMonthlyQueryResult : ApiQueryResult
     {
         [DataMember(Name = "Meta Data")]
-        public TimeSeriesMetaData_2 MetaData { get; set; }
+        public TimeSeriesMetaData MetaData { get; set; }
 
         [DataMember(Name = "Monthly Time Series")]
         public Dictionary<DateTime, TimeSeriesEntry> TimeSeries { get; set; }

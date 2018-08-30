@@ -23,5 +23,7 @@ namespace Exus.AlphaVantage.QueryResults.Types
         public int Volume { get; set; }
         [DataMember(Name = "7. dividend amount")]
         public double DividendAmount { get; set; }
+        [DataMember(Name = "8. split coefficient", IsRequired = false)]
+        public double SplitCoefficient { get; set; }
     }
 }

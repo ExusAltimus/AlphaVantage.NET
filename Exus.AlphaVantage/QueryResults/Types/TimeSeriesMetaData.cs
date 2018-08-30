@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exus.AlphaVantage.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
@@ -14,9 +15,11 @@ namespace Exus.AlphaVantage.QueryResults.Types
         public string Symbol { get; set; }
         [DataMember(Name = "3. Last Refreshed")]
         public DateTime LastRefreshed { get; set; }
-        [DataMember(Name = "4. Output Size")]
+        [DataMember(Name = "4. Output Size", IsRequired =false)]
         public string OutputSize { get; set; }
-        [DataMember(Name = "5. Time Zone")]
+        [DataMemberName("4. Time Zone")]
+        [DataMemberName("5. Time Zone")]
+        [DataMember]
         public string TimeZone { get; set; }
     }
 }
