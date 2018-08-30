@@ -78,16 +78,16 @@ public class StockQuerierService
 This library provides several useful interfaces that integrate with dependency injection services that enable you to provide your own implementations.
 
 ### IApiQuerier
-    Processes a query object and returns a query result
+Processes a query object and returns a query result
 ### IApiWebClient
-    Web client used by the default ApiQuerier that retrieves a response and deserializes into an object
+Web client used by the default ApiQuerier that retrieves a response and deserializes into an object
 ### IApiQueryResultDeserializer<TDataType>
-    Deserializer used by the default Web client to deserialize a response string (json)
-    Note: The datatype exists incase anything other than a string needs to be deserialized, such as a memory stream or file
+Deserializer used by the default Web client to deserialize a response string (json)
+Note: The datatype exists incase anything other than a string needs to be deserialized, such as a memory stream or file
 ### IApiQueryResultContractResolver
-    Json.NET Contract resolver used by the default deserializer
+Json.NET Contract resolver used by the default deserializer
 ### ApiQueryResultJsonConverter
-    Json.NET converter used by the default deserializer
+Json.NET converter used by the default deserializer
     
 ## Default services
 
