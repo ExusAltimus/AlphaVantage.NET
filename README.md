@@ -1,6 +1,9 @@
 # AlphaVantage.NET
 Fully Typed Alpha Vantage Api (https://www.alphavantage.co/) .NET Core C# Wrapper
 
+Nuget
+https://www.nuget.org/packages/Exus.AlphaVantage.Core/
+
 ## Basic usage example: 
 
 ```csharp
